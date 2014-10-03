@@ -23,9 +23,11 @@ module Bosh::Stemcell
     private
 
     def name
-      light ? "light-#{base_name}" : base_name
-      if (RbConfig::CONFIG['host_cpu'] == "powerpc64le")
-        "#{base_name}-ppc64"
+      mod_name = light ? "light-#{base_name}" : base_name
+      if (RbConfig::CONFIG['host_cpu'] == "powerpc64le") 
+        "#{mod_name}-ppc64" 
+      else
+        mod_name
       end
     end
 
